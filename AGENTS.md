@@ -55,6 +55,18 @@ Word Scramble. They're at `src/arcade/games/*.tsx` in `../portfolio-nextjs` at a
 before `3889831`, e.g. `git -C ../portfolio-nextjs show 3889831^:src/arcade/games/snake.tsx`.
 The matching registry entries are in `3889831^:src/arcade/registry.ts`.
 
+## Analytics and visit counter
+
+- **Analytics:** Vercel Web Analytics via `inject()` in `src/main.tsx`; enable it in this
+  project's Vercel dashboard (Analytics tab). No keys.
+- **Visit counter** (footer): there's no backend here. `src/components/visit-count.tsx` calls
+  the portfolio's API cross-origin (`site.visitCounter` in `src/site.ts`,
+  `https://aashishsinghal.com/api/visitor-count?site=arcade`), which stores `arcade:visits` in
+  the portfolio's Upstash Redis. It POSTs at most once per browser per day (localStorage
+  `visit-counted-on`), and in `pnpm dev` it only reads, never counts. If the arcade's origin
+  changes, update `ALLOWED_ORIGINS` in the portfolio's `api/visitor-count.ts`. Hidden when the
+  API is unavailable.
+
 ## Commands
 
 ```bash

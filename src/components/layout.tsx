@@ -1,6 +1,7 @@
 import { Suspense, useEffect } from "react"
 import { Link, Outlet, useLocation } from "react-router"
 import { site } from "@/site"
+import VisitCount from "@/components/visit-count"
 
 // React Router doesn't scroll on navigation, so go back to the top of each new page
 function useScrollToTop() {
@@ -47,9 +48,12 @@ function Footer() {
         <p>
           © {new Date().getFullYear()} {site.author}
         </p>
-        <a href={site.repository} target="_blank" rel="noreferrer" className="hover:text-teal">
-          Source on GitHub
-        </a>
+        <div className="flex items-center gap-5">
+          <VisitCount />
+          <a href={site.repository} target="_blank" rel="noreferrer" className="hover:text-teal">
+            Source on GitHub
+          </a>
+        </div>
       </div>
     </footer>
   )
