@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens. The site is dark-only and deliberately small:
+ *   gold  – the logo colour; brand accent (logo, primary actions, active states)
+ *   teal  – secondary accent (link hover, focus, small highlights)
+ *   everything else is black and greys
+ */
+@theme {
+  --font-sans: "Albert Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --color-bg: #0a0a0a;
+  --color-surface: #141414;
+  --color-surface-2: #1c1c1c;
+  --color-line: #262626;
+  --color-fg: #ededed;
+  --color-muted: #a3a3a3;
+  --color-faint: #737373;
+
+  --color-gold: #c49d71;
+  --color-gold-soft: #c49d7126;
+  --color-teal: #2dd4bf;
+  --color-teal-soft: #2dd4bf1f;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    background: var(--color-bg);
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-bg text-fg font-sans antialiased leading-relaxed;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-bg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 3px;
+  }
+
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  /* Inline text link: quiet by default, teal on hover */
+  .link {
+    @apply text-fg underline decoration-line underline-offset-4 transition-colors hover:text-teal hover:decoration-teal;
+  }
+}
