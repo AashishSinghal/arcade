@@ -8,6 +8,10 @@ Everything runs in the browser. There's no backend, and best scores are kept in 
 
 Built with Vite, React 19, React Router and Tailwind CSS 4.
 
+## Games
+
+- **Tic Tac Toe**: play a friend on the same device, or the CPU (easy or hard).
+
 ## Development
 
 ```sh
