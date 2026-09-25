@@ -246,7 +246,7 @@ function MarkIcon({ mark }: { mark: Mark }) {
     <svg
       viewBox="0 0 24 24"
       aria-hidden="true"
-      className={`h-1/2 w-1/2 ${mark === "X" ? "text-gold" : "text-teal"}`}
+      className={`block size-1/2 shrink-0 ${mark === "X" ? "text-gold" : "text-teal"}`}
       fill="none"
       stroke="currentColor"
       strokeWidth={2.5}
@@ -524,7 +524,7 @@ export default function TicTacToe() {
             role="group"
             aria-label="Tic tac toe board"
             onKeyDown={handleGridKey}
-            className="mx-auto grid aspect-square w-full max-w-[22rem] grid-cols-3 gap-2"
+            className="mx-auto grid aspect-square w-full max-w-[22rem] grid-cols-3 grid-rows-3 gap-2"
           >
             {board.map((cell, i) => {
               const inLine = line?.includes(i) ?? false
@@ -543,7 +543,7 @@ export default function TicTacToe() {
                   onClick={() => {
                     if (!disabled) dispatch({ type: "move", index: i })
                   }}
-                  className={`flex items-center justify-center rounded-lg border transition-colors focus-visible:relative focus-visible:z-10 ${
+                  className={`flex aspect-square min-h-0 min-w-0 items-center justify-center overflow-hidden rounded-lg border transition-colors focus-visible:relative focus-visible:z-10 ${
                     inLine
                       ? winner === "O"
                         ? "border-teal bg-teal-soft"
