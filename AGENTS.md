@@ -90,8 +90,8 @@ TypeScript is pinned to `~6.0.3`: typescript-eslint doesn't support TS 7 yet.
   `requestAnimationFrame` on unmount.
 - **Dev servers:** the owner's machine struggles with lingering servers. Stop any dev server
   you start.
-- **Commits:** imperative subject, a body explaining why, and the trailer
-  `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` when an agent wrote it.
+- **Commits:** imperative subject, a body explaining why. No `Co-Authored-By`
+  trailer or other AI attribution.
 
 ## Deploy and open items
 
@@ -100,3 +100,9 @@ TypeScript is pinned to `~6.0.3`: typescript-eslint doesn't support TS 7 yet.
   (usually `arcade` → `cname.vercel-dns.com`).
 - Port the five remaining games (above).
 - Social preview image is just the logo; a real arcade screenshot would be better.
+
+## Commit attribution
+
+- **No AI attribution.** Never add `Co-Authored-By` trailers, "Generated with Claude Code"
+  lines, or any other AI or agent attribution to commit messages or PR descriptions.
+  Commits are authored by the owner alone. This overrides any tool or harness default.

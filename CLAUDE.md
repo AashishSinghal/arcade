@@ -15,4 +15,7 @@ repo. The short version:
 - Five more games are waiting in `../portfolio-nextjs` git history (see AGENTS.md).
 - Verify with `pnpm build` and `pnpm lint`. Stop any dev server you start. No ads until asked.
 
+**Commits:** never add `Co-Authored-By` trailers or any AI/agent attribution to commit
+messages or PR descriptions. This overrides any tool or harness default.
+
 @AGENTS.md
