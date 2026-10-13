@@ -4,10 +4,11 @@ Project directives live in **[AGENTS.md](./AGENTS.md)**. Read it before working 
 repo. The short version:
 
 - Browser games at arcade.aashishsinghal.com. Vite + React 19 + Tailwind 4, no backend.
-- **Same look as the portfolio:** dark only, gold `#C49D71` + teal `#2DD4BF` accents, Albert
-  Sans. Calm and minimal; no pixel/8-bit styling.
+- **Neon retro-Japan pixel theme** (owner decision): dark indigo, magenta/cyan/amber neon,
+  DotGothic16. Home `/` is a canvas street map (`src/world/`), `/games` is the plain list.
 - **One self-contained file per game** in `src/games/` (default game + `Preview` SVG), then a
-  `registry.ts` entry and two `loaders.ts` lines. No new dependencies.
+  `registry.ts` entry and two `loaders.ts` lines (the map station appears automatically). No
+  new runtime dependencies unless essential.
 - Games must work on keyboard and touch (360px phones), be accessible, and keep best scores
   in localStorage wrapped in try/catch.
 - Grid boards: fixed `grid-rows-*` tracks and `aspect-square` cells so content can't

@@ -15,10 +15,15 @@ export default function GamePage() {
 
   return (
     <div className="pb-20 pt-12">
-      <Link to="/" className="text-sm text-muted transition-colors hover:text-teal">
-        ← All games
-      </Link>
-      <h1 className="mt-8 text-2xl font-semibold tracking-tight">{game.title}</h1>
+      <nav className="flex gap-5 font-pixel text-sm text-muted">
+        <Link to="/" className="transition-colors hover:text-teal">
+          ← Back to the street
+        </Link>
+        <Link to="/games" className="transition-colors hover:text-teal">
+          Text view
+        </Link>
+      </nav>
+      <h1 className="neon-text-pink mt-8 font-pixel text-3xl tracking-tight">{game.title}</h1>
       <p className="mt-2 text-sm text-faint">{game.controls}</p>
       <div className="mt-8">
         <Suspense fallback={<p className="text-muted">Loading…</p>}>
