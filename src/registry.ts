@@ -19,6 +19,14 @@ export const games: GameMeta[] = [
     difficulty: "easy",
     controls: "Click or tap a square",
   },
+  {
+    slug: "rock-paper-scissors",
+    title: "Rock Paper Scissors",
+    description:
+      "Throw rock, paper or scissors with your own hand on camera against a 3D CPU hand.",
+    difficulty: "medium",
+    controls: "Show a gesture to the camera, or tap Rock, Paper, Scissors (R / P / S)",
+  },
 ]
 
 export function getGame(slug: string) {

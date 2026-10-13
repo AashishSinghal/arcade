@@ -6,7 +6,7 @@ import prettier from "eslint-plugin-prettier/recommended"
 import tseslint from "typescript-eslint"
 
 export default tseslint.config(
-  { ignores: ["dist", ".vercel"] },
+  { ignores: ["dist", ".vercel", "public"] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ["**/*.{ts,tsx}"],
