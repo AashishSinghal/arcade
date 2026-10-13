@@ -6,6 +6,8 @@ export type GameMeta = {
   description: string
   difficulty: Difficulty
   controls: string
+  /** Japanese name shown on the neon sign of this game's station on the map (optional). */
+  jp?: string
 }
 
 // Each game lives in its own self-contained file under src/games/, exporting a
@@ -18,6 +20,7 @@ export const games: GameMeta[] = [
     description: "X's and O's. Play a friend on the same device, or take on the CPU.",
     difficulty: "easy",
     controls: "Click or tap a square",
+    jp: "マルバツ",
   },
   {
     slug: "rock-paper-scissors",

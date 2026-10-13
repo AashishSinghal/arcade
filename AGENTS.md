@@ -10,14 +10,18 @@ on Vercel from `main`.
 
 ## Prime directives
 
-1. **Same visual family as the portfolio.** Dark only. Tokens in `src/styles/globals.css`
-   are copied from the portfolio: `bg` `#0a0a0a`, `surface`, `surface-2`, `line`, `fg`,
-   `muted`, `faint`; accents `gold` `#C49D71` (brand, primary buttons, X marks) and `teal`
-   `#2DD4BF` (secondary, focus, O marks). Font: Albert Sans; `font-mono tabular-nums` for
-   scores and timers. Keep it calm and minimal: no 8-bit/pixel styling, no heavy shadows,
-   no blinking text. The owner rejected the pixel look on the portfolio.
-2. **Every game is one self-contained file** in `src/games/`: no shared game code, no new
-   dependencies, no external assets. That keeps games easy to add, move and lazy-load.
+1. **Neon retro-Japan pixel theme (owner decision, supersedes the old "calm minimal, no
+   pixel" rule).** Dark only. The home page (`/`) is an explorable 2D night-street map drawn
+   on a low-res `<canvas>` (code in `src/world/`); `/games` is the plain card-grid list.
+   Tokens in `src/styles/globals.css`: `bg` `#0b0820`, `surface`, `surface-2`, `line`, `fg`
+   `#e9e4ff`, `muted`, `faint`; accents `gold` (lantern amber `#ffb347`), `teal` (neon cyan
+   `#19f0ff`), plus `pink` `#ff2e97` and `violet` `#8b5cf6`. Fonts: DotGothic16 for
+   signs/headings (pixel, Japanese-capable), Press Start 2P for tiny labels, Albert Sans for
+   body text; `font-mono tabular-nums` for scores. The shell may use canvas, glow and
+   flicker, but respect `prefers-reduced-motion`. Game pages should stay readable and calm.
+2. **Every game is one self-contained file** in `src/games/`: no shared game code, no
+   external assets. No new runtime dependencies unless essential (the map uses none; all art
+   and audio are procedural). The shell (`src/world/`) is not a game and may span files.
 3. **Games must be real and finished.** Playable on desktop (keyboard + mouse) and on a
    360px-wide phone (touch), with a start screen, score/moves, game-over/win screen with
    restart, and a best score in localStorage (every read/write wrapped in try/catch).
@@ -36,7 +40,10 @@ src/
   registry.ts           game metadata: slug, title, description, difficulty, controls
   loaders.ts            React.lazy maps: gameComponents + gamePreviews (one chunk per game)
   games/<slug>.tsx      default export = the game; named export `Preview` = SVG thumbnail
-  pages/                home (card grid with previews), game, not-found
+  world/                the home-page neon street map (canvas): world.ts layout/collision,
+                        sprites.ts + render.ts procedural pixel art, audio.ts WebAudio synth,
+                        map-page.tsx React shell (modal, D-pad, a11y)
+  pages/                home (= map), games (card grid with previews), game, not-found
   components/layout.tsx header (logo greyscale → gold on hover), footer, skip link
   styles/globals.css    Tailwind 4 @theme tokens
 vercel.json             Vite preset + SPA rewrite
@@ -44,8 +51,13 @@ vercel.json             Vite preset + SPA rewrite
 
 ### Adding a game
 
+Stations on the map are derived from `games` in `registry.ts` by `layoutStations()` in
+`src/world/world.ts`, so steps 2 and 3 below add the shop to the street automatically.
+Upcoming games are listed in `comingSoon` in `src/world/world.ts` (display only); remove
+the entry when the game ships.
+
 1. Create `src/games/<slug>.tsx` exporting a default game component and a `Preview`
-   (32x20 viewBox SVG, `#0a0a0a`/`#141414` background, palette colours).
+   (32x20 viewBox SVG, `#0b0820`/`#120c2e` background, neon palette colours).
 2. Add its metadata to `games` in `src/registry.ts`.
 3. Add a line to both `gameComponents` and `gamePreviews` in `src/loaders.ts`.
 

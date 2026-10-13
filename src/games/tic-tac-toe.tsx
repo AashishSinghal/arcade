@@ -278,7 +278,7 @@ export function Preview() {
       preserveAspectRatio="xMidYMid meet"
       aria-hidden="true"
     >
-      <rect width="32" height="20" fill="#0a0a0a" />
+      <rect width="32" height="20" fill="#0b0820" />
       {cells.map((cell) => (
         <g key={`${cell.x}-${cell.y}`}>
           <rect
@@ -287,15 +287,15 @@ export function Preview() {
             width={5.5}
             height={5.5}
             rx={1}
-            fill={cell.win ? "#c49d7126" : "#141414"}
-            stroke={cell.win ? "#c49d71" : "#262626"}
+            fill={cell.win ? "#ffb34726" : "#120c2e"}
+            stroke={cell.win ? "#ffb347" : "#2e2362"}
             strokeWidth={0.25}
           />
           {cell.mark && (
             <g
               transform={`translate(${cell.x + 0.5} ${cell.y + 0.5}) scale(0.2083)`}
               fill="none"
-              stroke={cell.mark === "X" ? "#c49d71" : "#2dd4bf"}
+              stroke={cell.mark === "X" ? "#ffb347" : "#19f0ff"}
               strokeWidth={3}
               strokeLinecap="round"
             >

@@ -1,27 +1,29 @@
 @import "tailwindcss";
 
 /*
- * Design tokens. The site is dark-only and deliberately small:
- *   gold  – the logo colour; brand accent (logo, primary actions, active states)
- *   teal  – secondary accent (link hover, focus, small highlights)
- *   everything else is black and greys
+ * Design tokens: night-time neon Tokyo. Names are kept from the original palette so games
+ * and layout keep working: gold = lantern amber, teal = neon cyan.
  */
 @theme {
   --font-sans: "Albert Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-pixel: "DotGothic16", "Albert Sans", ui-monospace, monospace;
+  --font-label: "Press Start 2P", "DotGothic16", ui-monospace, monospace;
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
-  --color-bg: #0a0a0a;
-  --color-surface: #141414;
-  --color-surface-2: #1c1c1c;
-  --color-line: #262626;
-  --color-fg: #ededed;
-  --color-muted: #a3a3a3;
-  --color-faint: #737373;
+  --color-bg: #0b0820;
+  --color-surface: #120c2e;
+  --color-surface-2: #1b1342;
+  --color-line: #2e2362;
+  --color-fg: #e9e4ff;
+  --color-muted: #b5aadf;
+  --color-faint: #8478b8;
 
-  --color-gold: #c49d71;
-  --color-gold-soft: #c49d7126;
-  --color-teal: #2dd4bf;
-  --color-teal-soft: #2dd4bf1f;
+  --color-gold: #ffb347;
+  --color-gold-soft: #ffb34726;
+  --color-teal: #19f0ff;
+  --color-teal-soft: #19f0ff1f;
+  --color-pink: #ff2e97;
+  --color-violet: #8b5cf6;
 }
 
 @layer base {
@@ -40,10 +42,12 @@
 
   body {
     @apply bg-bg text-fg font-sans antialiased leading-relaxed;
+    background-image: radial-gradient(ellipse at 50% -10%, #2a1458 0%, transparent 60%);
+    background-attachment: fixed;
   }
 
   ::selection {
-    background: var(--color-gold);
+    background: var(--color-pink);
     color: var(--color-bg);
   }
 
@@ -61,5 +65,21 @@
   /* Inline text link: quiet by default, teal on hover */
   .link {
     @apply text-fg underline decoration-line underline-offset-4 transition-colors hover:text-teal hover:decoration-teal;
+  }
+}
+
+/* Neon helpers used by the shell and the game list */
+@layer utilities {
+  .neon-text-pink {
+    color: #ffd6ec;
+    text-shadow: 0 0 6px #ff2e97, 0 0 16px #ff2e97aa;
+  }
+  .neon-text-cyan {
+    color: #d8fcff;
+    text-shadow: 0 0 6px #19f0ff, 0 0 16px #19f0ffaa;
+  }
+  .neon-box {
+    border: 2px solid var(--color-pink);
+    box-shadow: 0 0 0 1px #0b0820, 0 0 14px #ff2e9788, inset 0 0 14px #ff2e9733;
   }
 }
