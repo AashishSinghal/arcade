@@ -708,7 +708,9 @@ export default function RockPaperScissors() {
           { label: "Streak", value: streak, color: "text-muted" },
         ].map((s) => (
           <div key={s.label} className="px-2 py-3">
-            <div className={`text-xs uppercase tracking-wider ${s.color}`}>{s.label}</div>
+            <div className={`text-[10px] uppercase ${s.color}`} style={PIXEL_FONT}>
+              {s.label}
+            </div>
             <div className="mt-1 font-mono text-lg tabular-nums">{s.value}</div>
           </div>
         ))}
@@ -728,11 +730,16 @@ export default function RockPaperScissors() {
 
       {phase === "start" ? (
         <div className="flex flex-col items-center gap-5 rounded-xl border border-line bg-surface px-4 py-8 text-center">
-          <h2 className="text-xl font-semibold tracking-tight">Rock Paper Scissors</h2>
+          <h2
+            className="text-base uppercase leading-relaxed text-gold"
+            style={{ ...PIXEL_FONT, textShadow: "0 0 12px var(--color-gold)" }}
+          >
+            Rock Paper Scissors
+          </h2>
           <p className="max-w-xs text-sm text-muted">
-            Face a 3D CPU hand. Throw rock, paper or scissors with your own hand on camera, or just
-            tap a button. Your camera image is never shown or sent anywhere. Only a hand outline is
-            drawn.
+            Face a pixel CPU hand. Throw rock, paper or scissors with your own hand on camera, or
+            just tap a button. Your camera image is never shown or sent anywhere. Only a hand
+            outline is drawn.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <button
@@ -756,7 +763,7 @@ export default function RockPaperScissors() {
           <div
             role="img"
             aria-label={stageLabel}
-            className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border-2 border-line bg-surface"
+            className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border-2 border-teal/60 bg-surface shadow-[0_0_28px_var(--color-teal-soft)]"
           >
             {/* CRT scanlines */}
             <div
@@ -1102,19 +1109,20 @@ export function Preview() {
       preserveAspectRatio="xMidYMid meet"
       aria-hidden="true"
     >
-      <rect width="32" height="20" fill="#0a0a0a" />
-      <rect x="3" y="7" width="7" height="7" rx="2.5" fill="#C49D71" />
-      <rect x="12.5" y="9" width="7" height="6" rx="1.5" fill="#141414" stroke="#C49D71" />
+      <rect width="32" height="20" fill="#0b0820" />
+      <rect y="18.5" width="32" height="0.6" fill="#ff2e97" />
+      <rect x="3" y="7" width="7" height="7" rx="2.5" fill="#ffb347" />
+      <rect x="12.5" y="9" width="7" height="6" rx="1.5" fill="#120c2e" stroke="#ffb347" />
       {[13.4, 15, 16.6, 18.2].map((x) => (
-        <rect key={x} x={x} y="4" width="1.1" height="5.5" rx="0.55" fill="#C49D71" />
+        <rect key={x} x={x} y="4" width="1.1" height="5.5" rx="0.55" fill="#ffb347" />
       ))}
-      <rect x="23" y="11" width="6" height="5" rx="1.5" fill="#C49D71" />
+      <rect x="23" y="11" width="6" height="5" rx="1.5" fill="#ffb347" />
       <line
         x1="24.6"
         y1="11"
         x2="23.4"
         y2="4.5"
-        stroke="#2DD4BF"
+        stroke="#19f0ff"
         strokeWidth="1.2"
         strokeLinecap="round"
       />
@@ -1123,7 +1131,7 @@ export function Preview() {
         y1="11"
         x2="28.4"
         y2="4.5"
-        stroke="#2DD4BF"
+        stroke="#19f0ff"
         strokeWidth="1.2"
         strokeLinecap="round"
       />

@@ -26,9 +26,10 @@ export const games: GameMeta[] = [
     slug: "rock-paper-scissors",
     title: "Rock Paper Scissors",
     description:
-      "Throw rock, paper or scissors with your own hand on camera against a 3D CPU hand.",
+      "Throw rock, paper or scissors with your own hand on camera against a pixel CPU hand.",
     difficulty: "medium",
     controls: "Show a gesture to the camera, or tap Rock, Paper, Scissors (R / P / S)",
+    jp: "じゃんけん",
   },
 ]
 
