@@ -314,7 +314,9 @@ export function buildWorld(gameList: GameMeta[] = registryGames): World {
     for (let y = r; y < r + h; y++) for (let x = c; x < c + w; x++) solid[y * COLS + x] = 1
   }
 
-  const spawn = { x: 30 * TILE, y: (rows - BASE_ROWS - 1) * TILE + 10 }
+  // Two rows above the bottom: the bottom rows hold the cabinets, bike and ramen cart, so
+  // spawning there boxed the player in with barely a tile of room either side.
+  const spawn = { x: 30 * TILE, y: (rows - BASE_ROWS - 3) * TILE + 10 }
 
   // Puddles: deterministic scatter on the walkable ground
   const puddles: World["puddles"] = []
